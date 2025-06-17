@@ -4,7 +4,143 @@
   --text-color: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.7);
   --border-color: rgba(255, 255, 255, 0.1);
+
+  /* WebTicTacToe theme colors */
+  --color-primary: #4caf50;
+  --color-secondary: #ffc107;
+  --color-accent: #2196f3;
+  --ttt-bg: #f7faf7;
+  --ttt-border: #d6d6d6;
 }
+
+/* WebTicTacToe Styles */
+.ttt-centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 64px auto 0 auto;
+  padding: 32px 20px 24px 20px;
+  background: var(--ttt-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.09), 0 1.5px 5px rgba(0,0,0,0.04);
+  max-width: 350px;
+}
+.ttt-app-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+  color: var(--color-primary);
+  text-align: center;
+}
+.ttt-status {
+  font-size: 1.32rem;
+  font-weight: 500;
+  color: #212121;
+  min-height: 38px;
+  margin-bottom: 22px;
+  margin-top: 10px;
+  letter-spacing: .1px;
+  text-align: center;
+}
+
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #fff;
+  border-radius: 10px;
+  border: 2.5px solid var(--ttt-border);
+  box-shadow: 0 2px 12px 1.5px rgba(33,33,33,0.07);
+}
+
+.ttt-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 264px;
+}
+
+.tictactoe-square {
+  width: 84px;
+  height: 84px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: center;
+  background: #f9f9f9;
+  border: 1.5px solid var(--ttt-border);
+  outline: none;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.12s, box-shadow 0.12s;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.tictactoe-square:not(:disabled):hover {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  transition: background 0.14s, color 0.14s;
+  box-shadow: 0 2px 8px rgba(76,175,80,0.09);
+}
+
+.tictactoe-square:disabled {
+  opacity: 0.72;
+  cursor: default;
+  background: #f8f8f8;
+}
+
+/* Restart Button */
+.ttt-restart-btn {
+  margin-top: 22px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.07rem;
+  padding: 0.7em 2.4em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px 0px rgba(33,150,243,0.09);
+  transition: background 0.13s, color 0.11s;
+}
+.ttt-restart-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Hint below the board */
+.ttt-hint {
+  font-size: 0.98rem;
+  color: #3a3a3a;
+  margin-top: 14px;
+  opacity: 0.83;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .ttt-centered-container {
+    padding: 16px 4vw 16px 4vw;
+    max-width: 98vw;
+  }
+  .ttt-board, .ttt-row {
+    width: 90vw;
+    min-width: 240px;
+    max-width: 98vw;
+  }
+  .tictactoe-square {
+    width: 28vw;
+    height: 28vw;
+    font-size: 1.5rem;
+    min-width: 55px;
+    min-height: 55px;
+  }
+}
+
 
 body {
   margin: 0;
@@ -15,11 +151,269 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* WebTicTacToe Styles */
+.ttt-centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 64px auto 0 auto;
+  padding: 32px 20px 24px 20px;
+  background: var(--ttt-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.09), 0 1.5px 5px rgba(0,0,0,0.04);
+  max-width: 350px;
+}
+.ttt-app-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+  color: var(--color-primary);
+  text-align: center;
+}
+.ttt-status {
+  font-size: 1.32rem;
+  font-weight: 500;
+  color: #212121;
+  min-height: 38px;
+  margin-bottom: 22px;
+  margin-top: 10px;
+  letter-spacing: .1px;
+  text-align: center;
+}
+
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #fff;
+  border-radius: 10px;
+  border: 2.5px solid var(--ttt-border);
+  box-shadow: 0 2px 12px 1.5px rgba(33,33,33,0.07);
+}
+
+.ttt-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 264px;
+}
+
+.tictactoe-square {
+  width: 84px;
+  height: 84px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: center;
+  background: #f9f9f9;
+  border: 1.5px solid var(--ttt-border);
+  outline: none;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.12s, box-shadow 0.12s;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.tictactoe-square:not(:disabled):hover {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  transition: background 0.14s, color 0.14s;
+  box-shadow: 0 2px 8px rgba(76,175,80,0.09);
+}
+
+.tictactoe-square:disabled {
+  opacity: 0.72;
+  cursor: default;
+  background: #f8f8f8;
+}
+
+/* Restart Button */
+.ttt-restart-btn {
+  margin-top: 22px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.07rem;
+  padding: 0.7em 2.4em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px 0px rgba(33,150,243,0.09);
+  transition: background 0.13s, color 0.11s;
+}
+.ttt-restart-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Hint below the board */
+.ttt-hint {
+  font-size: 0.98rem;
+  color: #3a3a3a;
+  margin-top: 14px;
+  opacity: 0.83;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .ttt-centered-container {
+    padding: 16px 4vw 16px 4vw;
+    max-width: 98vw;
+  }
+  .ttt-board, .ttt-row {
+    width: 90vw;
+    min-width: 240px;
+    max-width: 98vw;
+  }
+  .tictactoe-square {
+    width: 28vw;
+    height: 28vw;
+    font-size: 1.5rem;
+    min-width: 55px;
+    min-height: 55px;
+  }
+}
+
+
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
+
+/* WebTicTacToe Styles */
+.ttt-centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 64px auto 0 auto;
+  padding: 32px 20px 24px 20px;
+  background: var(--ttt-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.09), 0 1.5px 5px rgba(0,0,0,0.04);
+  max-width: 350px;
+}
+.ttt-app-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+  color: var(--color-primary);
+  text-align: center;
+}
+.ttt-status {
+  font-size: 1.32rem;
+  font-weight: 500;
+  color: #212121;
+  min-height: 38px;
+  margin-bottom: 22px;
+  margin-top: 10px;
+  letter-spacing: .1px;
+  text-align: center;
+}
+
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #fff;
+  border-radius: 10px;
+  border: 2.5px solid var(--ttt-border);
+  box-shadow: 0 2px 12px 1.5px rgba(33,33,33,0.07);
+}
+
+.ttt-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 264px;
+}
+
+.tictactoe-square {
+  width: 84px;
+  height: 84px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: center;
+  background: #f9f9f9;
+  border: 1.5px solid var(--ttt-border);
+  outline: none;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.12s, box-shadow 0.12s;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.tictactoe-square:not(:disabled):hover {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  transition: background 0.14s, color 0.14s;
+  box-shadow: 0 2px 8px rgba(76,175,80,0.09);
+}
+
+.tictactoe-square:disabled {
+  opacity: 0.72;
+  cursor: default;
+  background: #f8f8f8;
+}
+
+/* Restart Button */
+.ttt-restart-btn {
+  margin-top: 22px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.07rem;
+  padding: 0.7em 2.4em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px 0px rgba(33,150,243,0.09);
+  transition: background 0.13s, color 0.11s;
+}
+.ttt-restart-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Hint below the board */
+.ttt-hint {
+  font-size: 0.98rem;
+  color: #3a3a3a;
+  margin-top: 14px;
+  opacity: 0.83;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .ttt-centered-container {
+    padding: 16px 4vw 16px 4vw;
+    max-width: 98vw;
+  }
+  .ttt-board, .ttt-row {
+    width: 90vw;
+    min-width: 240px;
+    max-width: 98vw;
+  }
+  .tictactoe-square {
+    width: 28vw;
+    height: 28vw;
+    font-size: 1.5rem;
+    min-width: 55px;
+    min-height: 55px;
+  }
+}
+
 
 .navbar {
   background-color: var(--base-dark);
@@ -35,6 +429,135 @@ body {
   z-index: 100;
 }
 
+/* WebTicTacToe Styles */
+.ttt-centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 64px auto 0 auto;
+  padding: 32px 20px 24px 20px;
+  background: var(--ttt-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.09), 0 1.5px 5px rgba(0,0,0,0.04);
+  max-width: 350px;
+}
+.ttt-app-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+  color: var(--color-primary);
+  text-align: center;
+}
+.ttt-status {
+  font-size: 1.32rem;
+  font-weight: 500;
+  color: #212121;
+  min-height: 38px;
+  margin-bottom: 22px;
+  margin-top: 10px;
+  letter-spacing: .1px;
+  text-align: center;
+}
+
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #fff;
+  border-radius: 10px;
+  border: 2.5px solid var(--ttt-border);
+  box-shadow: 0 2px 12px 1.5px rgba(33,33,33,0.07);
+}
+
+.ttt-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 264px;
+}
+
+.tictactoe-square {
+  width: 84px;
+  height: 84px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: center;
+  background: #f9f9f9;
+  border: 1.5px solid var(--ttt-border);
+  outline: none;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.12s, box-shadow 0.12s;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.tictactoe-square:not(:disabled):hover {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  transition: background 0.14s, color 0.14s;
+  box-shadow: 0 2px 8px rgba(76,175,80,0.09);
+}
+
+.tictactoe-square:disabled {
+  opacity: 0.72;
+  cursor: default;
+  background: #f8f8f8;
+}
+
+/* Restart Button */
+.ttt-restart-btn {
+  margin-top: 22px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.07rem;
+  padding: 0.7em 2.4em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px 0px rgba(33,150,243,0.09);
+  transition: background 0.13s, color 0.11s;
+}
+.ttt-restart-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Hint below the board */
+.ttt-hint {
+  font-size: 0.98rem;
+  color: #3a3a3a;
+  margin-top: 14px;
+  opacity: 0.83;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .ttt-centered-container {
+    padding: 16px 4vw 16px 4vw;
+    max-width: 98vw;
+  }
+  .ttt-board, .ttt-row {
+    width: 90vw;
+    min-width: 240px;
+    max-width: 98vw;
+  }
+  .tictactoe-square {
+    width: 28vw;
+    height: 28vw;
+    font-size: 1.5rem;
+    min-width: 55px;
+    min-height: 55px;
+  }
+}
+
+
 .logo {
   font-size: 1.25rem;
   font-weight: 600;
@@ -43,9 +566,267 @@ body {
   gap: 8px;
 }
 
+/* WebTicTacToe Styles */
+.ttt-centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 64px auto 0 auto;
+  padding: 32px 20px 24px 20px;
+  background: var(--ttt-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.09), 0 1.5px 5px rgba(0,0,0,0.04);
+  max-width: 350px;
+}
+.ttt-app-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+  color: var(--color-primary);
+  text-align: center;
+}
+.ttt-status {
+  font-size: 1.32rem;
+  font-weight: 500;
+  color: #212121;
+  min-height: 38px;
+  margin-bottom: 22px;
+  margin-top: 10px;
+  letter-spacing: .1px;
+  text-align: center;
+}
+
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #fff;
+  border-radius: 10px;
+  border: 2.5px solid var(--ttt-border);
+  box-shadow: 0 2px 12px 1.5px rgba(33,33,33,0.07);
+}
+
+.ttt-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 264px;
+}
+
+.tictactoe-square {
+  width: 84px;
+  height: 84px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: center;
+  background: #f9f9f9;
+  border: 1.5px solid var(--ttt-border);
+  outline: none;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.12s, box-shadow 0.12s;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.tictactoe-square:not(:disabled):hover {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  transition: background 0.14s, color 0.14s;
+  box-shadow: 0 2px 8px rgba(76,175,80,0.09);
+}
+
+.tictactoe-square:disabled {
+  opacity: 0.72;
+  cursor: default;
+  background: #f8f8f8;
+}
+
+/* Restart Button */
+.ttt-restart-btn {
+  margin-top: 22px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.07rem;
+  padding: 0.7em 2.4em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px 0px rgba(33,150,243,0.09);
+  transition: background 0.13s, color 0.11s;
+}
+.ttt-restart-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Hint below the board */
+.ttt-hint {
+  font-size: 0.98rem;
+  color: #3a3a3a;
+  margin-top: 14px;
+  opacity: 0.83;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .ttt-centered-container {
+    padding: 16px 4vw 16px 4vw;
+    max-width: 98vw;
+  }
+  .ttt-board, .ttt-row {
+    width: 90vw;
+    min-width: 240px;
+    max-width: 98vw;
+  }
+  .tictactoe-square {
+    width: 28vw;
+    height: 28vw;
+    font-size: 1.5rem;
+    min-width: 55px;
+    min-height: 55px;
+  }
+}
+
+
 .logo-symbol {
   color: var(--base-light);
 }
+
+/* WebTicTacToe Styles */
+.ttt-centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 64px auto 0 auto;
+  padding: 32px 20px 24px 20px;
+  background: var(--ttt-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.09), 0 1.5px 5px rgba(0,0,0,0.04);
+  max-width: 350px;
+}
+.ttt-app-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+  color: var(--color-primary);
+  text-align: center;
+}
+.ttt-status {
+  font-size: 1.32rem;
+  font-weight: 500;
+  color: #212121;
+  min-height: 38px;
+  margin-bottom: 22px;
+  margin-top: 10px;
+  letter-spacing: .1px;
+  text-align: center;
+}
+
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #fff;
+  border-radius: 10px;
+  border: 2.5px solid var(--ttt-border);
+  box-shadow: 0 2px 12px 1.5px rgba(33,33,33,0.07);
+}
+
+.ttt-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 264px;
+}
+
+.tictactoe-square {
+  width: 84px;
+  height: 84px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: center;
+  background: #f9f9f9;
+  border: 1.5px solid var(--ttt-border);
+  outline: none;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.12s, box-shadow 0.12s;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.tictactoe-square:not(:disabled):hover {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  transition: background 0.14s, color 0.14s;
+  box-shadow: 0 2px 8px rgba(76,175,80,0.09);
+}
+
+.tictactoe-square:disabled {
+  opacity: 0.72;
+  cursor: default;
+  background: #f8f8f8;
+}
+
+/* Restart Button */
+.ttt-restart-btn {
+  margin-top: 22px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.07rem;
+  padding: 0.7em 2.4em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px 0px rgba(33,150,243,0.09);
+  transition: background 0.13s, color 0.11s;
+}
+.ttt-restart-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Hint below the board */
+.ttt-hint {
+  font-size: 0.98rem;
+  color: #3a3a3a;
+  margin-top: 14px;
+  opacity: 0.83;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .ttt-centered-container {
+    padding: 16px 4vw 16px 4vw;
+    max-width: 98vw;
+  }
+  .ttt-board, .ttt-row {
+    width: 90vw;
+    min-width: 240px;
+    max-width: 98vw;
+  }
+  .tictactoe-square {
+    width: 28vw;
+    height: 28vw;
+    font-size: 1.5rem;
+    min-width: 55px;
+    min-height: 55px;
+  }
+}
+
 
 .container {
   max-width: 900px;
@@ -54,6 +835,135 @@ body {
   width: 100%;
   box-sizing: border-box;
 }
+
+/* WebTicTacToe Styles */
+.ttt-centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 64px auto 0 auto;
+  padding: 32px 20px 24px 20px;
+  background: var(--ttt-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.09), 0 1.5px 5px rgba(0,0,0,0.04);
+  max-width: 350px;
+}
+.ttt-app-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+  color: var(--color-primary);
+  text-align: center;
+}
+.ttt-status {
+  font-size: 1.32rem;
+  font-weight: 500;
+  color: #212121;
+  min-height: 38px;
+  margin-bottom: 22px;
+  margin-top: 10px;
+  letter-spacing: .1px;
+  text-align: center;
+}
+
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #fff;
+  border-radius: 10px;
+  border: 2.5px solid var(--ttt-border);
+  box-shadow: 0 2px 12px 1.5px rgba(33,33,33,0.07);
+}
+
+.ttt-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 264px;
+}
+
+.tictactoe-square {
+  width: 84px;
+  height: 84px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: center;
+  background: #f9f9f9;
+  border: 1.5px solid var(--ttt-border);
+  outline: none;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.12s, box-shadow 0.12s;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.tictactoe-square:not(:disabled):hover {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  transition: background 0.14s, color 0.14s;
+  box-shadow: 0 2px 8px rgba(76,175,80,0.09);
+}
+
+.tictactoe-square:disabled {
+  opacity: 0.72;
+  cursor: default;
+  background: #f8f8f8;
+}
+
+/* Restart Button */
+.ttt-restart-btn {
+  margin-top: 22px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.07rem;
+  padding: 0.7em 2.4em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px 0px rgba(33,150,243,0.09);
+  transition: background 0.13s, color 0.11s;
+}
+.ttt-restart-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Hint below the board */
+.ttt-hint {
+  font-size: 0.98rem;
+  color: #3a3a3a;
+  margin-top: 14px;
+  opacity: 0.83;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .ttt-centered-container {
+    padding: 16px 4vw 16px 4vw;
+    max-width: 98vw;
+  }
+  .ttt-board, .ttt-row {
+    width: 90vw;
+    min-width: 240px;
+    max-width: 98vw;
+  }
+  .tictactoe-square {
+    width: 28vw;
+    height: 28vw;
+    font-size: 1.5rem;
+    min-width: 55px;
+    min-height: 55px;
+  }
+}
+
 
 .hero {
   padding-top: 120px;
@@ -65,11 +975,269 @@ body {
   gap: 24px;
 }
 
+/* WebTicTacToe Styles */
+.ttt-centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 64px auto 0 auto;
+  padding: 32px 20px 24px 20px;
+  background: var(--ttt-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.09), 0 1.5px 5px rgba(0,0,0,0.04);
+  max-width: 350px;
+}
+.ttt-app-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+  color: var(--color-primary);
+  text-align: center;
+}
+.ttt-status {
+  font-size: 1.32rem;
+  font-weight: 500;
+  color: #212121;
+  min-height: 38px;
+  margin-bottom: 22px;
+  margin-top: 10px;
+  letter-spacing: .1px;
+  text-align: center;
+}
+
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #fff;
+  border-radius: 10px;
+  border: 2.5px solid var(--ttt-border);
+  box-shadow: 0 2px 12px 1.5px rgba(33,33,33,0.07);
+}
+
+.ttt-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 264px;
+}
+
+.tictactoe-square {
+  width: 84px;
+  height: 84px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: center;
+  background: #f9f9f9;
+  border: 1.5px solid var(--ttt-border);
+  outline: none;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.12s, box-shadow 0.12s;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.tictactoe-square:not(:disabled):hover {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  transition: background 0.14s, color 0.14s;
+  box-shadow: 0 2px 8px rgba(76,175,80,0.09);
+}
+
+.tictactoe-square:disabled {
+  opacity: 0.72;
+  cursor: default;
+  background: #f8f8f8;
+}
+
+/* Restart Button */
+.ttt-restart-btn {
+  margin-top: 22px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.07rem;
+  padding: 0.7em 2.4em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px 0px rgba(33,150,243,0.09);
+  transition: background 0.13s, color 0.11s;
+}
+.ttt-restart-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Hint below the board */
+.ttt-hint {
+  font-size: 0.98rem;
+  color: #3a3a3a;
+  margin-top: 14px;
+  opacity: 0.83;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .ttt-centered-container {
+    padding: 16px 4vw 16px 4vw;
+    max-width: 98vw;
+  }
+  .ttt-board, .ttt-row {
+    width: 90vw;
+    min-width: 240px;
+    max-width: 98vw;
+  }
+  .tictactoe-square {
+    width: 28vw;
+    height: 28vw;
+    font-size: 1.5rem;
+    min-width: 55px;
+    min-height: 55px;
+  }
+}
+
+
 .subtitle {
   color: var(--base-light);
   font-weight: 500;
   font-size: 1.1rem;
 }
+
+/* WebTicTacToe Styles */
+.ttt-centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 64px auto 0 auto;
+  padding: 32px 20px 24px 20px;
+  background: var(--ttt-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.09), 0 1.5px 5px rgba(0,0,0,0.04);
+  max-width: 350px;
+}
+.ttt-app-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+  color: var(--color-primary);
+  text-align: center;
+}
+.ttt-status {
+  font-size: 1.32rem;
+  font-weight: 500;
+  color: #212121;
+  min-height: 38px;
+  margin-bottom: 22px;
+  margin-top: 10px;
+  letter-spacing: .1px;
+  text-align: center;
+}
+
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #fff;
+  border-radius: 10px;
+  border: 2.5px solid var(--ttt-border);
+  box-shadow: 0 2px 12px 1.5px rgba(33,33,33,0.07);
+}
+
+.ttt-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 264px;
+}
+
+.tictactoe-square {
+  width: 84px;
+  height: 84px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: center;
+  background: #f9f9f9;
+  border: 1.5px solid var(--ttt-border);
+  outline: none;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.12s, box-shadow 0.12s;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.tictactoe-square:not(:disabled):hover {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  transition: background 0.14s, color 0.14s;
+  box-shadow: 0 2px 8px rgba(76,175,80,0.09);
+}
+
+.tictactoe-square:disabled {
+  opacity: 0.72;
+  cursor: default;
+  background: #f8f8f8;
+}
+
+/* Restart Button */
+.ttt-restart-btn {
+  margin-top: 22px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.07rem;
+  padding: 0.7em 2.4em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px 0px rgba(33,150,243,0.09);
+  transition: background 0.13s, color 0.11s;
+}
+.ttt-restart-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Hint below the board */
+.ttt-hint {
+  font-size: 0.98rem;
+  color: #3a3a3a;
+  margin-top: 14px;
+  opacity: 0.83;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .ttt-centered-container {
+    padding: 16px 4vw 16px 4vw;
+    max-width: 98vw;
+  }
+  .ttt-board, .ttt-row {
+    width: 90vw;
+    min-width: 240px;
+    max-width: 98vw;
+  }
+  .tictactoe-square {
+    width: 28vw;
+    height: 28vw;
+    font-size: 1.5rem;
+    min-width: 55px;
+    min-height: 55px;
+  }
+}
+
 
 .title {
   font-size: 3.5rem;
@@ -78,6 +1246,135 @@ body {
   margin: 0;
 }
 
+/* WebTicTacToe Styles */
+.ttt-centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 64px auto 0 auto;
+  padding: 32px 20px 24px 20px;
+  background: var(--ttt-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.09), 0 1.5px 5px rgba(0,0,0,0.04);
+  max-width: 350px;
+}
+.ttt-app-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+  color: var(--color-primary);
+  text-align: center;
+}
+.ttt-status {
+  font-size: 1.32rem;
+  font-weight: 500;
+  color: #212121;
+  min-height: 38px;
+  margin-bottom: 22px;
+  margin-top: 10px;
+  letter-spacing: .1px;
+  text-align: center;
+}
+
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #fff;
+  border-radius: 10px;
+  border: 2.5px solid var(--ttt-border);
+  box-shadow: 0 2px 12px 1.5px rgba(33,33,33,0.07);
+}
+
+.ttt-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 264px;
+}
+
+.tictactoe-square {
+  width: 84px;
+  height: 84px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: center;
+  background: #f9f9f9;
+  border: 1.5px solid var(--ttt-border);
+  outline: none;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.12s, box-shadow 0.12s;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.tictactoe-square:not(:disabled):hover {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  transition: background 0.14s, color 0.14s;
+  box-shadow: 0 2px 8px rgba(76,175,80,0.09);
+}
+
+.tictactoe-square:disabled {
+  opacity: 0.72;
+  cursor: default;
+  background: #f8f8f8;
+}
+
+/* Restart Button */
+.ttt-restart-btn {
+  margin-top: 22px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.07rem;
+  padding: 0.7em 2.4em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px 0px rgba(33,150,243,0.09);
+  transition: background 0.13s, color 0.11s;
+}
+.ttt-restart-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Hint below the board */
+.ttt-hint {
+  font-size: 0.98rem;
+  color: #3a3a3a;
+  margin-top: 14px;
+  opacity: 0.83;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .ttt-centered-container {
+    padding: 16px 4vw 16px 4vw;
+    max-width: 98vw;
+  }
+  .ttt-board, .ttt-row {
+    width: 90vw;
+    min-width: 240px;
+    max-width: 98vw;
+  }
+  .tictactoe-square {
+    width: 28vw;
+    height: 28vw;
+    font-size: 1.5rem;
+    min-width: 55px;
+    min-height: 55px;
+  }
+}
+
+
 .description {
   font-size: 1.1rem;
   line-height: 1.5;
@@ -85,6 +1382,135 @@ body {
   max-width: 600px;
   margin-bottom: 16px;
 }
+
+/* WebTicTacToe Styles */
+.ttt-centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 64px auto 0 auto;
+  padding: 32px 20px 24px 20px;
+  background: var(--ttt-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.09), 0 1.5px 5px rgba(0,0,0,0.04);
+  max-width: 350px;
+}
+.ttt-app-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+  color: var(--color-primary);
+  text-align: center;
+}
+.ttt-status {
+  font-size: 1.32rem;
+  font-weight: 500;
+  color: #212121;
+  min-height: 38px;
+  margin-bottom: 22px;
+  margin-top: 10px;
+  letter-spacing: .1px;
+  text-align: center;
+}
+
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #fff;
+  border-radius: 10px;
+  border: 2.5px solid var(--ttt-border);
+  box-shadow: 0 2px 12px 1.5px rgba(33,33,33,0.07);
+}
+
+.ttt-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 264px;
+}
+
+.tictactoe-square {
+  width: 84px;
+  height: 84px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: center;
+  background: #f9f9f9;
+  border: 1.5px solid var(--ttt-border);
+  outline: none;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.12s, box-shadow 0.12s;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.tictactoe-square:not(:disabled):hover {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  transition: background 0.14s, color 0.14s;
+  box-shadow: 0 2px 8px rgba(76,175,80,0.09);
+}
+
+.tictactoe-square:disabled {
+  opacity: 0.72;
+  cursor: default;
+  background: #f8f8f8;
+}
+
+/* Restart Button */
+.ttt-restart-btn {
+  margin-top: 22px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.07rem;
+  padding: 0.7em 2.4em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px 0px rgba(33,150,243,0.09);
+  transition: background 0.13s, color 0.11s;
+}
+.ttt-restart-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Hint below the board */
+.ttt-hint {
+  font-size: 0.98rem;
+  color: #3a3a3a;
+  margin-top: 14px;
+  opacity: 0.83;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .ttt-centered-container {
+    padding: 16px 4vw 16px 4vw;
+    max-width: 98vw;
+  }
+  .ttt-board, .ttt-row {
+    width: 90vw;
+    min-width: 240px;
+    max-width: 98vw;
+  }
+  .tictactoe-square {
+    width: 28vw;
+    height: 28vw;
+    font-size: 1.5rem;
+    min-width: 55px;
+    min-height: 55px;
+  }
+}
+
 
 .btn {
   background-color: var(--base-light);
@@ -98,11 +1524,398 @@ body {
   transition: background-color 0.2s ease;
 }
 
+/* WebTicTacToe Styles */
+.ttt-centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 64px auto 0 auto;
+  padding: 32px 20px 24px 20px;
+  background: var(--ttt-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.09), 0 1.5px 5px rgba(0,0,0,0.04);
+  max-width: 350px;
+}
+.ttt-app-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+  color: var(--color-primary);
+  text-align: center;
+}
+.ttt-status {
+  font-size: 1.32rem;
+  font-weight: 500;
+  color: #212121;
+  min-height: 38px;
+  margin-bottom: 22px;
+  margin-top: 10px;
+  letter-spacing: .1px;
+  text-align: center;
+}
+
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #fff;
+  border-radius: 10px;
+  border: 2.5px solid var(--ttt-border);
+  box-shadow: 0 2px 12px 1.5px rgba(33,33,33,0.07);
+}
+
+.ttt-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 264px;
+}
+
+.tictactoe-square {
+  width: 84px;
+  height: 84px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: center;
+  background: #f9f9f9;
+  border: 1.5px solid var(--ttt-border);
+  outline: none;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.12s, box-shadow 0.12s;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.tictactoe-square:not(:disabled):hover {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  transition: background 0.14s, color 0.14s;
+  box-shadow: 0 2px 8px rgba(76,175,80,0.09);
+}
+
+.tictactoe-square:disabled {
+  opacity: 0.72;
+  cursor: default;
+  background: #f8f8f8;
+}
+
+/* Restart Button */
+.ttt-restart-btn {
+  margin-top: 22px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.07rem;
+  padding: 0.7em 2.4em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px 0px rgba(33,150,243,0.09);
+  transition: background 0.13s, color 0.11s;
+}
+.ttt-restart-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Hint below the board */
+.ttt-hint {
+  font-size: 0.98rem;
+  color: #3a3a3a;
+  margin-top: 14px;
+  opacity: 0.83;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .ttt-centered-container {
+    padding: 16px 4vw 16px 4vw;
+    max-width: 98vw;
+  }
+  .ttt-board, .ttt-row {
+    width: 90vw;
+    min-width: 240px;
+    max-width: 98vw;
+  }
+  .tictactoe-square {
+    width: 28vw;
+    height: 28vw;
+    font-size: 1.5rem;
+    min-width: 55px;
+    min-height: 55px;
+  }
+}
+
+
 .btn:hover {
   background-color: #7691ff;
 }
+
+/* WebTicTacToe Styles */
+.ttt-centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 64px auto 0 auto;
+  padding: 32px 20px 24px 20px;
+  background: var(--ttt-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.09), 0 1.5px 5px rgba(0,0,0,0.04);
+  max-width: 350px;
+}
+.ttt-app-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+  color: var(--color-primary);
+  text-align: center;
+}
+.ttt-status {
+  font-size: 1.32rem;
+  font-weight: 500;
+  color: #212121;
+  min-height: 38px;
+  margin-bottom: 22px;
+  margin-top: 10px;
+  letter-spacing: .1px;
+  text-align: center;
+}
+
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #fff;
+  border-radius: 10px;
+  border: 2.5px solid var(--ttt-border);
+  box-shadow: 0 2px 12px 1.5px rgba(33,33,33,0.07);
+}
+
+.ttt-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 264px;
+}
+
+.tictactoe-square {
+  width: 84px;
+  height: 84px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: center;
+  background: #f9f9f9;
+  border: 1.5px solid var(--ttt-border);
+  outline: none;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.12s, box-shadow 0.12s;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.tictactoe-square:not(:disabled):hover {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  transition: background 0.14s, color 0.14s;
+  box-shadow: 0 2px 8px rgba(76,175,80,0.09);
+}
+
+.tictactoe-square:disabled {
+  opacity: 0.72;
+  cursor: default;
+  background: #f8f8f8;
+}
+
+/* Restart Button */
+.ttt-restart-btn {
+  margin-top: 22px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.07rem;
+  padding: 0.7em 2.4em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px 0px rgba(33,150,243,0.09);
+  transition: background 0.13s, color 0.11s;
+}
+.ttt-restart-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Hint below the board */
+.ttt-hint {
+  font-size: 0.98rem;
+  color: #3a3a3a;
+  margin-top: 14px;
+  opacity: 0.83;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .ttt-centered-container {
+    padding: 16px 4vw 16px 4vw;
+    max-width: 98vw;
+  }
+  .ttt-board, .ttt-row {
+    width: 90vw;
+    min-width: 240px;
+    max-width: 98vw;
+  }
+  .tictactoe-square {
+    width: 28vw;
+    height: 28vw;
+    font-size: 1.5rem;
+    min-width: 55px;
+    min-height: 55px;
+  }
+}
+
 
 .btn-large {
   padding: 12px 24px;
   font-size: 1.1rem;
 }
+
+/* WebTicTacToe Styles */
+.ttt-centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 64px auto 0 auto;
+  padding: 32px 20px 24px 20px;
+  background: var(--ttt-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.09), 0 1.5px 5px rgba(0,0,0,0.04);
+  max-width: 350px;
+}
+.ttt-app-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+  color: var(--color-primary);
+  text-align: center;
+}
+.ttt-status {
+  font-size: 1.32rem;
+  font-weight: 500;
+  color: #212121;
+  min-height: 38px;
+  margin-bottom: 22px;
+  margin-top: 10px;
+  letter-spacing: .1px;
+  text-align: center;
+}
+
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #fff;
+  border-radius: 10px;
+  border: 2.5px solid var(--ttt-border);
+  box-shadow: 0 2px 12px 1.5px rgba(33,33,33,0.07);
+}
+
+.ttt-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 264px;
+}
+
+.tictactoe-square {
+  width: 84px;
+  height: 84px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: center;
+  background: #f9f9f9;
+  border: 1.5px solid var(--ttt-border);
+  outline: none;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.12s, box-shadow 0.12s;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.tictactoe-square:not(:disabled):hover {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  transition: background 0.14s, color 0.14s;
+  box-shadow: 0 2px 8px rgba(76,175,80,0.09);
+}
+
+.tictactoe-square:disabled {
+  opacity: 0.72;
+  cursor: default;
+  background: #f8f8f8;
+}
+
+/* Restart Button */
+.ttt-restart-btn {
+  margin-top: 22px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.07rem;
+  padding: 0.7em 2.4em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px 0px rgba(33,150,243,0.09);
+  transition: background 0.13s, color 0.11s;
+}
+.ttt-restart-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Hint below the board */
+.ttt-hint {
+  font-size: 0.98rem;
+  color: #3a3a3a;
+  margin-top: 14px;
+  opacity: 0.83;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .ttt-centered-container {
+    padding: 16px 4vw 16px 4vw;
+    max-width: 98vw;
+  }
+  .ttt-board, .ttt-row {
+    width: 90vw;
+    min-width: 240px;
+    max-width: 98vw;
+  }
+  .tictactoe-square {
+    width: 28vw;
+    height: 28vw;
+    font-size: 1.5rem;
+    min-width: 55px;
+    min-height: 55px;
+  }
+}
+
